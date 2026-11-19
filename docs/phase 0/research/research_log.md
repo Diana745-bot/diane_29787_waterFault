@@ -8,7 +8,6 @@
 This document records the research sources used to understand public water-point functionality, maintenance challenges, existing solutions, and the technical tools planned for this project.
 
 | No. | Source (APA) | Type | Link | Key Finding | Gap It Shows |
-|---|---|---|---|---|---|
 
 | 1 | Murray, A. L., Stone, G., Yang, A. R., Lawrence, N. F., Matthews, H., & Kayser, G. L. (2024). Rural water point functionality estimates and associations: Evidence from nine countries in Sub-Saharan Africa and South Asia. *Water Resources Research, 60*, e2023WR034679. | Research paper | https://doi.org/10.1029/2023WR034679 | The study found that older water points were less likely to remain functional and that proper management and maintenance support were associated with better functionality. | The study provides functionality estimates, but our project focuses on recording individual faults, inspections, repair assignments and repair progress. |
 

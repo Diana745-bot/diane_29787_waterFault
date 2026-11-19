@@ -8,7 +8,7 @@ This report documents the initial data-quality inspection of the Water For Peopl
 
 - Original dataset: Water For People Rwanda 2021.
 - Original data rows: 2,062.
-- Empty row removed during cleaning: 1.
+- Incomplete record excluded during cleaning: 1.
 - Cleaned data rows: 2,061.
 - Unique IDs: 2,061.
 - Missing Unique IDs: 0.
@@ -72,11 +72,30 @@ Before importing the dataset, the following activities will be performed:
 5. Review missing values and distinguish expected blanks from problematic records.
 6. Check technology and functionality values for consistency.
 7. Preserve the original Excel dataset unchanged.
+## Functionality Status
 
+The original dataset contained the following functionality values:
+
+| Functionality Status | Number of Records |
+|---|---:|
+| Yes | 1,958 |
+| N/A | 77 |
+| No Data | 27 |
+| **Total** | **2,062** |
+
+These counts are from the original dataset before excluding the one incomplete record.
 ## 6. Conclusion
 
 The dataset provides useful information about public water points in Rwanda. However, some records and fields require further examination before database import.
 
 The original dataset will be preserved, and any cleaning decisions will be documented to maintain data accuracy and traceability.
+
+## Cleaning Summary
+
+The dataset was reviewed in Microsoft Excel. One incomplete record without a Unique ID, coordinates, date and geographical information was excluded from the cleaned copy.
+
+The original workbook was preserved. The cleaned dataset contains 2,061 records, with no missing or duplicate Unique IDs.
+
+The functionality counts above refer to the original dataset before cleaning.
 
 **Current status:** Initial inspection completed. Data cleaning and Oracle import are pending.

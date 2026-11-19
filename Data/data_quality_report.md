@@ -6,12 +6,14 @@ This report documents the initial data-quality inspection of the Water For Peopl
 
 ## 2. Dataset Overview
 
-- Dataset: Water For People_Rwanda_2021
-- Worksheet inspected: Transformed Data
-- Total rows: 2,062
-- Total columns: 39
-- Records with a Unique ID: 2,061
-- Records with both latitude and longitude: 2,061
+- Original dataset: Water For People Rwanda 2021.
+- Original data rows: 2,062.
+- Empty row removed during cleaning: 1.
+- Cleaned data rows: 2,061.
+- Unique IDs: 2,061.
+- Missing Unique IDs: 0.
+- Duplicate non-empty Unique IDs: 0.
+- Latitude and longitude are available for all 2,061 remaining records.
 
 ## 3. Initial Data Quality Findings
 

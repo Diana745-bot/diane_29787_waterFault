@@ -1,105 +1,64 @@
-# Data Dictionary – Water For People Rwanda 2021
+# Data Dictionary – Public Water Fault Tracking System
 
 ## 1. Dataset Overview
 
-- **Dataset:** Water For People_Rwanda_2021
+- **Dataset name:** Water For People Rwanda 2021
 - **Source:** Water Point Data Exchange (WPdx)
-- **Main worksheet:** Transformed Data
-- **Total records:** 2,062 data rows
+- **Original file:** `water_for_people_rwanda_2021.xlsx`
+- **Cleaned file:** `water_for_people_rwanda_2021_cleaned.xlsx`
+- **Main worksheet:** `Transformed Data`
+- **Original data rows:** 2,062
+- **Incomplete records excluded:** 1
+- **Cleaned data rows:** 2,061
 - **Total columns:** 39
-- **File:** water_for_people_rwanda_2021.xlsx
 
-The dataset contains information about water-point identification, geographical location, technology, functionality, water availability and service quality.
+The dataset contains information about water-point identification, geographical location, technology, functionality, water availability, service levels and water quality.
 
 ## 2. Column Descriptions
 
-### A. Identification and Location
+### A. Identification and Geographical Information
 
-| Column | Description |
+| Excel Column | Description |
 |---|---|
-| Instance Id | Survey record identifier |
-| Date | Date associated with the record |
-| Unique ID | Unique identifier assigned to the water-point record |
-| Latitude | Geographic latitude |
-| Longitude | Geographic longitude |
+| Instance Id | Original survey instance identifier |
+| Date | Date associated with the survey record |
+| Unique ID | Unique identifier assigned to the water point |
+| Latitude | Geographic latitude of the water point |
+| Longitude | Geographic longitude of the water point |
 | Elevation | Elevation of the water point |
-| Geo Level 1–7 | Administrative or geographical location levels |
+| Geo Level 1 | Country-level geographical information |
+| Geo Level 2 | District-level geographical information |
+| Geo Level 3 | Sector-level geographical information |
+| Geo Level 4 | Cell-level geographical information |
+| Geo Level 5 | Village-level geographical information |
+| Geo Level 6 | Additional geographical information |
+| Geo Level 7 | Additional geographical information |
 
-### B. Water Point and Technology
+### B. Service Level, Technology and Functionality
 
-| Column | Description |
+| Excel Column | Description |
 |---|---|
 | Level Of Service Score | Numerical service-level score |
-| Level Of Service | Description of the service level |
-| Has Improved Water Point | Indicates whether the water point is classified as improved |
-| Tech Type Improved | Type of improved water technology |
-| Tech Type UnImproved | Type of unimproved water technology |
-| Water point is Functional | Indicates reported functionality |
-| Water Point Source is Protected | Indicates whether the source is protected |
+| Level Of Service | Reported level of service |
+| Has Improved Water Point (1) | Indicates whether the water point is classified as improved |
+| Tech Type Improved | Recorded improved water technology |
+| Tech Type UnImproved | Recorded unimproved water technology |
+| Water point is Functional or not greater than 3 months without service | Reported functionality status |
+| Water Point Source is Protected | Indicates whether the water source is protected |
 | # of Users | Number of people using the water point |
-| # of Users Meets Standards | Indicates whether the number of users meets standards |
+| # of Users Meets Standards (1) | Indicates whether the number of users meets the applicable standard |
 
-### C. Breakdown and Availability
+### C. Breakdowns and Water Availability
 
-| Column | Description |
+| Excel Column | Description |
 |---|---|
-| Water Point/System Out Of Service Or Broken? | Indicates whether the system is out of service or broken |
-| Number Of Times Broken | Records breakdown frequency |
-| Number Of Days Broken | Records breakdown duration |
-| Out Of Service For One Day Or Less | Indicates the reported service interruption period |
-| Water Is Available On The Day Of The Visit | Indicates water availability during the visit |
-| Seconds to fill 20 liters | Time recorded to fill 20 litres |
-| Piped or handpump? | Identifies the water delivery technology |
-| Handpump flow rate | Recorded handpump flow information |
-| Liters per person per day | Recorded water quantity per person |
-| Quantity Of Water Available Meets Standards | Indicates whether water quantity meets standards |
-
-### D. Water Quality and Overall Condition
-
-| Column | Description |
-|---|---|
-| E Coli Meets Standard | Indicates whether E. coli meets the standard |
-| Residual Chlorine Meets Standard | Indicates whether residual chlorine meets the standard |
-| Bacteria Meets Standard | Indicates whether bacteria meets the standard |
-| Other contaminant of concern | Records other possible contaminants |
-| Other Contaminant of Concern Meets Standard | Indicates whether other contaminants meet standards |
-| Water Quality Meets Standards | Overall water-quality assessment |
-| Water Point/System In Good Overall Condition and Functioning | Indicates the overall condition and functioning status |
-
-## 3. Initial Data Quality Observations
-
-The initial inspection identified:
-
-- 2,062 data rows in the main worksheet.
-- 39 columns.
-- 2,061 non-empty Unique IDs.
-- No duplicate non-empty Unique IDs.
-- 2,061 records with both latitude and longitude.
-- Some fields contain missing values.
-
-The dataset includes records from Gicumbi, Rulindo and Kicukiro.
-
-## 4. Planned Use in the Project
-
-The dataset will provide initial information for the WATER_POINTS table, including:
-
-- Water-point identifiers.
-- Geographic coordinates.
-- Administrative locations.
-- Technology types.
-- Functionality information.
-- Number of users.
-
-Fault reports, inspections, maintenance assignments, repair activities and costs will be maintained separately in the project database.
-
-## 5. Data Preparation
-
-Before importing the records into Oracle Database 21c, the dataset will be checked for:
-
-1. Missing identifiers and important fields.
-2. Invalid geographical coordinates.
-3. Inconsistent technology and functionality values.
-4. Appropriate date and numeric formats.
-5. Duplicate records.
-
-The original Excel file will be preserved as the source dataset.
+| Water Point/System Out Of Service Or Broken? | Indicates whether the water point or system is broken or out of service |
+| Water Point/System Number Of Times Broken Is Equal to Oncer Per Month or Less | Records whether breakdown frequency meets the stated condition |
+| Water Point/System Number Of Days Broken Is One Day Or Less | Records whether the breakdown duration meets the stated condition |
+| Water Point/ System Out Of Service For One Day Or Less Per Month In The Last Year | Records the reported duration of service interruptions |
+| Water Is Available On The Day Of The Visit (1) | Indicates whether water was available during the visit |
+| Seconds to fill 20 liters | Time required to fill 20 litres of water |
+| Piped or handpump? | Identifies the water delivery type |
+| FOR HANDPUMPS ONLY – Handpump flow rate in L/s | Recorded flow rate for handpumps |
+| FOR PIPED ONLY – Liters per person per day | Recorded water quantity per person per day for piped systems |
+| Quantity

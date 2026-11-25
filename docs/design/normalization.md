@@ -177,3 +177,12 @@ These examples use actual values from the original dataset. The geographical lab
 **Dependency removed:** District information is stored once in DISTRICTS, while SECTORS references its district. This avoids repeating district details for every water point.
 
 **Important:** Fault reports, inspections and maintenance records are future system data. They are not present in the original dataset and will be recorded separately by the proposed system.
+### 6.6 Source Data and Proposed System Tables
+
+The original Water For People Rwanda 2021 dataset provides water-point observations, including geographical location, technology, functionality and water-quality information.
+
+The tables DISTRICTS, SECTORS and WATER_POINTS organize information derived from the source dataset.
+
+The remaining tables, including FAULT_REPORTS, INSPECTIONS, MAINTENANCE_TEAMS, REPAIR_ASSIGNMENTS, REPAIR_ACTIVITIES and MAINTENANCE_COSTS, are proposed system tables. Their records will be created when users report faults and maintenance activities are managed.
+
+These proposed tables extend the original dataset to support the objectives of the Public Water Fault Tracking System.

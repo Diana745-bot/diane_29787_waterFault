@@ -40,3 +40,19 @@ Examples of fields in the original dataset include:
 - Water Quality Meets Standards
 
 The original dataset contains 2,062 rows and 39 columns. It is retained as the UNF starting point for this exercise.
+## 4. First Normal Form (1NF)
+
+A table is in First Normal Form when:
+
+- Each column contains a single value.
+- Each row represents one record.
+- There are no repeating groups or lists stored in a single field.
+- Each record can be uniquely identified.
+
+For this project, each row represents one water-point observation. The `Unique ID` field is intended to identify each water-point record.
+
+During the initial inspection, 2,061 records had a non-empty Unique ID, while one record had a missing Unique ID. No duplicate non-empty Unique IDs were found.
+
+The original dataset will be checked for fields containing multiple values or repeating groups. Any necessary separation will be documented before the final 1NF structure is confirmed.
+
+**Dependency removed:** Repeating groups or multiple values within a single field must be separated so that each field stores one value.

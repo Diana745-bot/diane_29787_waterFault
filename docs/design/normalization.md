@@ -147,3 +147,33 @@ The proposed design separates water-point information, administrative locations,
 **Dependency removed:** Descriptive information that depends on another entity rather than directly on the primary key is moved into its own table and connected through foreign keys.
 
 The final table structure and relationships will be documented in the logical ERD and data dictionary.
+### 6.5 Sample Records in 3NF
+
+The following examples show how the geographical and water-point information from the original dataset can be organized into separate related tables.
+
+**DISTRICTS**
+
+| District Name |
+|---|
+| Gicumbi |
+
+**SECTORS**
+
+| Sector Name | District Name |
+|---|---|
+| Miyove | Gicumbi |
+| Ruvune | Gicumbi |
+
+**WATER_POINTS**
+
+| Unique ID | Sector Name | Cell | Village | Water Point Type | Functionality | Number of Users |
+|---|---|---|---|---|---|---:|
+| Gicumbisurveysgp1-3FB72Q | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
+| Gicumbisurveysgp5-3FBBHQ | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
+| Gicumbisurveysgp5-3FBDDC | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
+
+These examples use actual values from the original dataset. The geographical labels are interpreted from the corresponding Geo Level columns and will be confirmed during field mapping.
+
+**Dependency removed:** District information is stored once in DISTRICTS, while SECTORS references its district. This avoids repeating district details for every water point.
+
+**Important:** Fault reports, inspections and maintenance records are future system data. They are not present in the original dataset and will be recorded separately by the proposed system.

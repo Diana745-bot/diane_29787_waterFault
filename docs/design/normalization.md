@@ -95,6 +95,19 @@ In this dataset, the `Unique ID` field is intended to identify each water-point 
 Therefore, once the 1NF structure is confirmed and the missing Unique ID record is investigated, the water-point table satisfies the 2NF requirement without requiring a split to remove partial dependencies.
 
 **Dependency removed:** No partial dependency was identified because the intended key consists of a single attribute.
+### 5.1 Sample Records in 2NF
+
+The following records show the water-point information using `Unique ID` as the intended primary key.
+
+| Unique ID | District | Sector | Cell | Village | Water Point Type | Functionality | Number of Users |
+|---|---|---|---|---|---|---|---:|
+| Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
+| Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
+| Gicumbisurveysgp5-3FBDDC | Gicumbi | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
+
+The selected records use a single-column key, `Unique ID`. Therefore, there are no partial dependencies to remove because partial dependencies occur when a table has a composite key and a non-key attribute depends on only part of that key.
+
+**Result:** No additional table split is required to remove partial dependencies at this stage.
 ## 6. Third Normal Form (3NF)
 
 A table is in Third Normal Form when:

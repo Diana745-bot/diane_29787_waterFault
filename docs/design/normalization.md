@@ -67,6 +67,21 @@ During the initial inspection, 2,061 records had a non-empty Unique ID, while on
 The original dataset will be checked for fields containing multiple values or repeating groups. Any necessary separation will be documented before the final 1NF structure is confirmed.
 
 **Dependency removed:** Repeating groups or multiple values within a single field must be separated so that each field stores one value.
+### 4.1 Sample Records in 1NF
+
+The following records demonstrate the atomic values in the original dataset after checking the 1NF requirements.
+
+| Unique ID | District | Sector | Cell | Village | Water Point Type | Functionality | Number of Users |
+|---|---|---|---|---|---|---|---:|
+| Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
+| Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
+| Gicumbisurveysgp5-3FBDDC | Gicumbi | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
+
+Each row represents one water-point observation. The selected fields contain individual values rather than lists or repeating groups.
+
+The original dataset therefore requires no split for these fields to satisfy 1NF. The incomplete record with a missing Unique ID remains flagged for investigation; it has not been deleted.
+
+**Result:** The selected records satisfy the atomic-value and one-record-per-row requirements of 1NF.
 ## 5. Second Normal Form (2NF)
 
 A table is in Second Normal Form when:

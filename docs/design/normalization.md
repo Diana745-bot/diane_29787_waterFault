@@ -69,3 +69,42 @@ In this dataset, the `Unique ID` field is intended to identify each water-point 
 Therefore, once the 1NF structure is confirmed and the missing Unique ID record is investigated, the water-point table satisfies the 2NF requirement without requiring a split to remove partial dependencies.
 
 **Dependency removed:** No partial dependency was identified because the intended key consists of a single attribute.
+## 6. Third Normal Form (3NF)
+
+A table is in Third Normal Form when:
+
+- It is already in Second Normal Form.
+- Every non-key attribute depends directly on the primary key.
+- There are no transitive dependencies.
+
+For the Public Water Fault Tracking System, the logical design separates the following information:
+
+### 6.1 Administrative Locations
+
+The proposed design uses separate DISTRICTS and SECTORS tables.
+
+A sector belongs to a district. Therefore, the district information will be stored in the DISTRICTS table and referenced by the SECTORS table.
+
+WATER_POINTS will reference its administrative location rather than repeatedly storing district details.
+
+The exact mapping of the original Geo Level fields to administrative levels will be confirmed during field mapping.
+
+### 6.2 Fault Information
+
+Fault categories will be stored separately in FAULT_TYPES.
+
+FAULT_REPORTS will reference a fault type instead of repeating its description in every report.
+
+### 6.3 Maintenance Information
+
+Maintenance team details will be stored in MAINTENANCE_TEAMS.
+
+REPAIR_ASSIGNMENTS will reference the relevant maintenance team and fault report instead of repeating team details in every assignment.
+
+### 6.4 Result of 3NF
+
+The proposed design separates water-point information, administrative locations, fault reports, inspections, maintenance teams, repair assignments, repair activities and maintenance costs into related tables.
+
+**Dependency removed:** Descriptive information that depends on another entity rather than directly on the primary key is moved into its own table and connected through foreign keys.
+
+The final table structure and relationships will be documented in the logical ERD and data dictionary.

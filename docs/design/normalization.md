@@ -56,3 +56,16 @@ During the initial inspection, 2,061 records had a non-empty Unique ID, while on
 The original dataset will be checked for fields containing multiple values or repeating groups. Any necessary separation will be documented before the final 1NF structure is confirmed.
 
 **Dependency removed:** Repeating groups or multiple values within a single field must be separated so that each field stores one value.
+## 5. Second Normal Form (2NF)
+
+A table is in Second Normal Form when:
+
+- It is already in First Normal Form.
+- Every non-key attribute depends on the whole primary key.
+- There are no partial dependencies.
+
+In this dataset, the `Unique ID` field is intended to identify each water-point record. Because this is a single-column key rather than a composite key, partial dependencies cannot occur.
+
+Therefore, once the 1NF structure is confirmed and the missing Unique ID record is investigated, the water-point table satisfies the 2NF requirement without requiring a split to remove partial dependencies.
+
+**Dependency removed:** No partial dependency was identified because the intended key consists of a single attribute.

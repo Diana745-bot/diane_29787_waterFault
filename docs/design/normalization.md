@@ -42,17 +42,7 @@ Examples of fields in the original dataset include:
 - `Water Quality Meets Standards (1) (E-Coli, Bacteria, Residual`
 
 The original dataset contains 2,062 rows and 39 columns. It is retained as the UNF starting point for this exercise.
-### 3.1 Sample Records from the Original Dataset
 
-The following three examples are taken from the original `Transformed Data` worksheet. They show how water-point information appears together before normalization.
-
-| Unique ID | District | Sector | Cell | Village | Water Point Type | Functionality | Number of Users |
-|---|---|---|---|---|---|---|---:|
-| Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
-| Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
-| Gicumbisurveysgp5-3FBDDC | Gicumbi | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
-
-These examples show that identification, geographical, technology and functionality information is stored together in the original dataset.
 ### 3.1 Sample Records in UNF
 
 The following are three sample records taken from the original Excel dataset before normalization.
@@ -131,7 +121,6 @@ A table is in Third Normal Form when:
 
 For the Public Water Fault Tracking System, the logical design separates the following information:
 
-### 6.1 Administrative Locations
 
 ### 6.1 Administrative Locations
 

@@ -53,6 +53,17 @@ The following three examples are taken from the original `Transformed Data` work
 | Gicumbisurveysgp5-3FBDDC | Gicumbi | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
 
 These examples show that identification, geographical, technology and functionality information is stored together in the original dataset.
+### 3.1 Sample Records in UNF
+
+The following are three sample records taken from the original Excel dataset before normalization.
+
+| Unique ID | Geo Level 2 | Geo Level 3 | Geo Level 4 | Geo Level 5 | Tech Type Improved | # of Users |
+|---|---|---|---|---|---|---:|
+| Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | 50 |
+| Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | 200 |
+| Gicumbisurveysgp5-3FBDDC | Gicumbi | Ruvune | Rebero | Rwamiko | Protected Spring | 312 |
+
+These records remain together in the original source dataset at the starting stage of normalization.
 ## 4. First Normal Form (1NF)
 
 A table is in First Normal Form when:

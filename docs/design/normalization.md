@@ -28,16 +28,18 @@ At this stage, the original columns are kept together in one dataset without sep
 
 Examples of fields in the original dataset include:
 
-- Unique ID
-- Water Point Name
-- Date
-- Latitude
-- Longitude
-- District
-- Functionality Status
-- Tech Type Improved
-- Number of Users
-- Water Quality Meets Standards
+- `Unique ID`
+- `Instance Id`
+- `Date`
+- `Latitude`
+- `Longitude`
+- `Geo Level 1`
+- `Geo Level 2`
+- `Geo Level 3`
+- `Tech Type Improved`
+- `Water point is Functional or not greater than 3 months without service`
+- `# of Users`
+- `Water Quality Meets Standards (1) (E-Coli, Bacteria, Residual`
 
 The original dataset contains 2,062 rows and 39 columns. It is retained as the UNF starting point for this exercise.
 ### 3.1 Sample Records from the Original Dataset
@@ -71,7 +73,7 @@ The original dataset will be checked for fields containing multiple values or re
 
 The following records demonstrate the atomic values in the original dataset after checking the 1NF requirements.
 
-| Unique ID | District | Sector | Cell | Village | Water Point Type | Functionality | Number of Users |
+| Unique ID | Geo Level 2 | Geo Level 3 | Geo Level 4 | Geo Level 5 | Tech Type Improved | Water point is Functional or not greater than 3 months without service | # of Users |
 |---|---|---|---|---|---|---|---:|
 | Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
 | Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
@@ -99,7 +101,7 @@ Therefore, once the 1NF structure is confirmed and the missing Unique ID record 
 
 The following records show the water-point information using `Unique ID` as the intended primary key.
 
-| Unique ID | District | Sector | Cell | Village | Water Point Type | Functionality | Number of Users |
+| Unique ID | Geo Level 2 | Geo Level 3 | Geo Level 4 | Geo Level 5 | Tech Type Improved | Water point is Functional or not greater than 3 months without service | # of Users |
 |---|---|---|---|---|---|---|---:|
 | Gicumbisurveysgp1-3FB72Q | Gicumbi | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
 | Gicumbisurveysgp5-3FBBHQ | Gicumbi | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
@@ -149,7 +151,7 @@ The proposed design separates water-point information, administrative locations,
 The final table structure and relationships will be documented in the logical ERD and data dictionary.
 ### 6.5 Sample Records in 3NF
 
-The following examples show how the geographical and water-point information from the original dataset can be organized into separate related tables.
+The following examples demonstrate how geographical information from the original dataset can be organized into separate related tables.
 
 **DISTRICTS**
 
@@ -166,17 +168,17 @@ The following examples show how the geographical and water-point information fro
 
 **WATER_POINTS**
 
-| Unique ID | Sector Name | Cell | Village | Water Point Type | Functionality | Number of Users |
+| Unique ID | Sector Name | Geo Level 4 | Geo Level 5 | Tech Type Improved | Functionality Status | # of Users |
 |---|---|---|---|---|---|---:|
 | Gicumbisurveysgp1-3FB72Q | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
 | Gicumbisurveysgp5-3FBBHQ | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
 | Gicumbisurveysgp5-3FBDDC | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
 
-These examples use actual values from the original dataset. The geographical labels are interpreted from the corresponding Geo Level columns and will be confirmed during field mapping.
+The examples use actual values from the original dataset. The geographical levels are interpreted as district, sector, cell and village, respectively. This interpretation will be confirmed during field mapping.
 
-**Dependency removed:** District information is stored once in DISTRICTS, while SECTORS references its district. This avoids repeating district details for every water point.
+In the implemented database, generated identifiers will be used as primary keys, and foreign keys will connect the related tables.
 
-**Important:** Fault reports, inspections and maintenance records are future system data. They are not present in the original dataset and will be recorded separately by the proposed system.
+**Dependency removed:** District information is stored once in DISTRICTS, while SECTORS references its district. This avoids repeating district details for every sector.
 ### 6.6 Source Data and Proposed System Tables
 
 The original Water For People Rwanda 2021 dataset provides water-point observations, including geographical location, technology, functionality and water-quality information.

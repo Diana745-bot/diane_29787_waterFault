@@ -105,10 +105,10 @@ A table is in Second Normal Form when:
 
 In this dataset, the `Unique ID` field is intended to identify each water-point record. Because this is a single-column key rather than a composite key, partial dependencies cannot occur.
 
-Therefore, once the 1NF structure is confirmed and the missing Unique ID record is investigated, the water-point table satisfies the 2NF requirement without requiring a split to remove partial dependencies.
+Because `Unique ID` is a single-column key, there are no partial dependencies to remove. Therefore, no table split is required to achieve 2NF at this stage. The water-point attributes remain associated with their identifying record.
 
-**Dependency removed:** No partial dependency was identified because the intended key consists of a single attribute.
-### 5.1 Sample Records in 2NF
+**Dependency removed:** No partial dependency was identified because the intended primary key consists of a single attribute. No decomposition was necessary for this step.
+
 
 The following records show the water-point information using `Unique ID` as the intended primary key.
 
@@ -133,34 +133,60 @@ For the Public Water Fault Tracking System, the logical design separates the fol
 
 ### 6.1 Administrative Locations
 
-The proposed design uses separate DISTRICTS and SECTORS tables.
+### 6.1 Administrative Locations
 
-A sector belongs to a district. Therefore, the district information will be stored in the DISTRICTS table and referenced by the SECTORS table.
+The original dataset contains geographical information in the columns `Geo Level 1` through `Geo Level 7`.
 
-WATER_POINTS will reference its administrative location rather than repeatedly storing district details.
+For the proposed logical design, the geographical information is organized into separate DISTRICTS and SECTORS tables.
 
-The exact mapping of the original Geo Level fields to administrative levels will be confirmed during field mapping.
+- DISTRICTS stores district names and country information.
+- SECTORS stores sector names and references the district to which each sector belongs.
+- WATER_POINTS references SECTORS through `SECTOR_ID`.
 
+For example, the original dataset contains water points in the Gicumbi district, including Miyove and Ruvune sectors.
+
+This structure avoids repeatedly storing district information for every water point.
+
+**Dependency removed:** District information is separated from water-point records because it can be determined through the associated sector. This removes the transitive dependency from the proposed water-point structure.
 ### 6.2 Fault Information
 
-Fault categories will be stored separately in FAULT_TYPES.
+The original Water For People Rwanda 2021 dataset does not contain a complete fault-reporting history or a fault-category management structure.
 
-FAULT_REPORTS will reference a fault type instead of repeating its description in every report.
+The proposed system introduces two related tables:
 
+- FAULT_TYPES stores fault categories and their descriptions.
+- FAULT_REPORTS stores individual fault reports and references the relevant fault type through `FAULT_TYPE_ID`.
+
+This prevents fault-category descriptions from being repeated in every fault report.
+
+**Dependency removed:** Fault-type descriptions are stored in FAULT_TYPES and referenced by FAULT_REPORTS, rather than being repeatedly stored in fault-report records.
 ### 6.3 Maintenance Information
 
-Maintenance team details will be stored in MAINTENANCE_TEAMS.
+The original dataset does not contain maintenance-team records, repair assignments, repair activities or maintenance-cost transactions.
 
-REPAIR_ASSIGNMENTS will reference the relevant maintenance team and fault report instead of repeating team details in every assignment.
+These are additional tables proposed for the Public Water Fault Tracking System:
+
+- MAINTENANCE_TEAMS stores maintenance-team information.
+- TEAM_MEMBERS stores individual members and references their team.
+- REPAIR_ASSIGNMENTS connects fault reports to maintenance teams.
+- REPAIR_ACTIVITIES records work performed under each assignment.
+- MAINTENANCE_COSTS records expenses associated with repair assignments.
+
+Separating these records makes it easier to track teams, assignments, repair progress and maintenance expenses.
+
+**Dependency removed:** Team information is stored once in MAINTENANCE_TEAMS and referenced by TEAM_MEMBERS and REPAIR_ASSIGNMENTS, avoiding repeated team details.
 
 ### 6.4 Result of 3NF
 
-The proposed design separates water-point information, administrative locations, fault reports, inspections, maintenance teams, repair assignments, repair activities and maintenance costs into related tables.
+The proposed logical database design separates information into related tables to reduce unnecessary duplication and improve data consistency.
 
-**Dependency removed:** Descriptive information that depends on another entity rather than directly on the primary key is moved into its own table and connected through foreign keys.
+The geographical tables organize district, sector and water-point information. The fault-reporting tables organize reporters, fault types, reports and inspections. The maintenance tables organize teams, team members, repair assignments, activities and costs.
 
-The final table structure and relationships will be documented in the logical ERD and data dictionary.
-### 6.5 Sample Records in 3NF
+The original Excel dataset provides the baseline water-point information, while the additional tables support the new reporting and maintenance functions of the proposed system.
+
+The logical design uses primary keys to identify records and foreign keys to connect related tables.
+
+**Dependency removed:** Descriptive information that depends on another entity is stored in its own table and referenced through a foreign key.
 
 The following examples demonstrate how geographical information from the original dataset can be organized into separate related tables.
 

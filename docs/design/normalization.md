@@ -188,34 +188,36 @@ The logical design uses primary keys to identify records and foreign keys to con
 
 **Dependency removed:** Descriptive information that depends on another entity is stored in its own table and referenced through a foreign key.
 
-The following examples demonstrate how geographical information from the original dataset can be organized into separate related tables.
+### 6.5 Sample Records in 3NF
+
+The following examples demonstrate how geographical and water-point information from the original dataset can be organized into related tables.
 
 **DISTRICTS**
 
-| District Name |
-|---|
-| Gicumbi |
+| DISTRICT_ID (PK) | DISTRICT_NAME | COUNTRY_NAME |
+|---:|---|---|
+| 1 | Gicumbi | Rwanda |
 
 **SECTORS**
 
-| Sector Name | District Name |
-|---|---|
-| Miyove | Gicumbi |
-| Ruvune | Gicumbi |
+| SECTOR_ID (PK) | DISTRICT_ID (FK) | SECTOR_NAME |
+|---:|---:|---|
+| 101 | 1 | Miyove |
+| 102 | 1 | Ruvune |
 
 **WATER_POINTS**
 
-| Unique ID | Sector Name | Geo Level 4 | Geo Level 5 | Tech Type Improved | Functionality Status | # of Users |
-|---|---|---|---|---|---|---:|
-| Gicumbisurveysgp1-3FB72Q | Miyove | Mubuga | Kirwa | Protected Spring | Yes | 50 |
-| Gicumbisurveysgp5-3FBBHQ | Ruvune | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
-| Gicumbisurveysgp5-3FBDDC | Ruvune | Rebero | Rwamiko | Protected Spring | Yes | 312 |
+| WATER_POINT_ID (PK) | SECTOR_ID (FK) | CELL_NAME | VILLAGE_NAME | TECHNOLOGY_IMPROVED | IS_FUNCTIONAL | NUMBER_OF_USERS |
+|---|---:|---|---|---|---|---:|
+| Gicumbisurveysgp1-3FB72Q | 101 | Mubuga | Kirwa | Protected Spring | Yes | 50 |
+| Gicumbisurveysgp5-3FBBHQ | 102 | Cyandaro | Nyankokoma | Protected Spring | Yes | 200 |
+| Gicumbisurveysgp5-3FBDDC | 102 | Rebero | Rwamiko | Protected Spring | Yes | 312 |
 
-The examples use actual values from the original dataset. The geographical levels are interpreted as district, sector, cell and village, respectively. This interpretation will be confirmed during field mapping.
+The water-point values are taken from the original dataset. The district and sector identifiers shown above are illustrative generated identifiers used to demonstrate the proposed relationships.
 
-In the implemented database, generated identifiers will be used as primary keys, and foreign keys will connect the related tables.
+The geographical labels are interpreted from the corresponding Geo Level columns and will be confirmed during field mapping.
 
-**Dependency removed:** District information is stored once in DISTRICTS, while SECTORS references its district. This avoids repeating district details for every sector.
+**Dependency removed:** District information is stored once in DISTRICTS, and each sector references its district using DISTRICT_ID. Each water point references its sector using SECTOR_ID, reducing repeated geographical information.
 ### 6.6 Source Data and Proposed System Tables
 
 The original Water For People Rwanda 2021 dataset provides water-point observations, including geographical location, technology, functionality and water-quality information.
